@@ -10,24 +10,24 @@ if (isset($_SESSION["UserID"])) {
 	Sebuah blok code untuk menghandle login request yang memvalidasi user credential dari database
  */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if (
-		isset($_POST["username"]) &&
-		isset($_POST["password"])
-	) {
-		$query = $dbh->prepare("SELECT * FROM user WHERE Username = :username AND Password = :password");
-		$query->bindParam(':username', sanitizeInput($_POST['username']));
-		$query->bindParam(':password', sanitizeInput($_POST['password']));
-		$query->execute();
-		$user = $query->fetch();
-		if ($user != null) {
+
+	$validatedData = validate($_POST, [
+		"username" => "required|string",
+		"password" => "required|string"
+	]);
+
+	$query = $dbh->prepare("SELECT * FROM user WHERE Username = :username");
+	$query->bindParam(':username', $validatedData["username"]);
+	$query->execute();
+	$user = $query->fetch();
+	if ($user != null) {
+		if (password_verify($validatedData["password"], $user["Password"])) {
 			$_SESSION['UserID'] = $user['UserID'];
 			$_SESSION['Username'] = $user['Username'];
 			redirect("index.php");
-		} else {
-
-			redirect("login.php?failed");
 		}
 	}
+	redirect("login.php?failed");
 }
 
 ?>

@@ -31,10 +31,10 @@ $albums = $query->fetchAll(PDO::FETCH_ASSOC);
 	?>
 	<form method="post" action="photo_post.php" enctype="multipart/form-data">
 		<div class="flex flex-col items-center my-36 gap-4 text-lg">
+			<?php
 			/*
 			Tampilkan pesan error jika validasi gagal
 			*/
-			<?php
 			if (!empty($_SESSION["errors"])) {
 			?>
 				<div class="border-2 text-red-600 font-bold border-red-600 px-4 py-3 rounded-2xl mb-4">

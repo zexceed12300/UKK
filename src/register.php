@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$query = $dbh->prepare("INSERT INTO user VALUES (NULL, :username, :password, :email, :nama, :alamat)");
 	$query->bindParam(':username', $validatedData['username']);
-	$query->bindParam(':password', $validatedData['password']);
+	$query->bindParam(':password', password_hash($validatedData['password'], PASSWORD_BCRYPT));
 	$query->bindParam(':email', $validatedData['email']);
 	$query->bindParam(':nama', $validatedData['nama']);
 	$query->bindParam(':alamat', $validatedData['alamat']);
