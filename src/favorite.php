@@ -5,6 +5,11 @@ include 'koneksi.php';
 if (empty($_GET["username"])) {
 	$_GET["username"] = $_SESSION["Username"];
 }
+
+/*
+	Query untuk mendapatkan foto yang di like oleh user yang ditentukan
+ */
+
 $query = $dbh->prepare("SELECT * FROM user WHERE Username = :username");
 $query->bindParam(":username", $_GET["username"]);
 $query->execute();
@@ -71,6 +76,9 @@ $photos = $query->fetchAll(PDO::FETCH_ASSOC);
 							<div class="flex gap-4">
 								<div class="flex items-center gap-2">
 									<?php
+									/*
+										Query untuk mengetahui apakah foto ini telah kita like
+									*/
 									$isLiked = $dbh->prepare("SELECT * FROM likefoto WHERE FotoID = :fotoid AND UserID = :userid");
 									$isLiked->bindParam(":fotoid", $photo["FotoID"]);
 									$isLiked->bindParam(":userid", $_SESSION["UserID"]);

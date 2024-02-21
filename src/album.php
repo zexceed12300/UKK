@@ -24,6 +24,9 @@ include 'koneksi.php';
 	<div class="grid grid-cols-5 gap-6 mx-28">
 		<?php
 
+		/*
+			Query untuk mendapatkan semua album beserta usernya
+		*/
 		$query = $dbh->prepare("SELECT user.Username, album.AlbumID, album.NamaAlbum, COUNT(foto.FotoID) AS JumlahFoto, GROUP_CONCAT(foto.LokasiFile) AS LokasiFile FROM album LEFT JOIN foto ON foto.AlbumID = album.AlbumID INNER JOIN user ON user.UserID = album.UserID GROUP BY album.AlbumID");
 		$query->execute();
 		$albums = $query->fetchAll(PDO::FETCH_ASSOC);

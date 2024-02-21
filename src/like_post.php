@@ -4,6 +4,10 @@ include 'koneksi.php';
 
 include 'middleware.php';
 
+/*
+	Sebuah blok code untuk request like
+ */
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (
 		isset($_POST["fotoid"])

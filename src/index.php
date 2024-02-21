@@ -23,6 +23,11 @@ include 'koneksi.php';
 	</div>
 	<div class="mx-28 my-16 columns-5 gap-16">
 		<?php
+
+		/*
+			Query untuk mendapatkan foto beserta user, jumlah like dan komennya
+		 */
+
 		$query = $dbh->prepare("SELECT foto.FotoID, foto.LokasiFile, foto.JudulFoto, foto.DeskripsiFoto, user.Username, album.NamaAlbum, album.AlbumID, COUNT(DISTINCT likefoto.LikeID) AS likee, COUNT(DISTINCT komentarfoto.KomentarID) AS komentar FROM foto INNER JOIN user ON foto.UserID = user.UserID INNER JOIN album ON foto.AlbumID = album.AlbumID LEFT JOIN likefoto ON foto.FotoID = likefoto.FotoID LEFT JOIN komentarfoto ON foto.FotoID = komentarfoto.FotoID GROUP BY foto.FotoID");
 		$query->execute();
 		$photos = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -46,6 +51,9 @@ include 'koneksi.php';
 					<div class="flex gap-4">
 						<div class="flex items-center gap-2">
 							<?php
+							/*
+								Query untuk mengetahui apakah foto ini telah kita like
+							*/
 							$isLiked = $dbh->prepare("SELECT * FROM likefoto WHERE FotoID = :fotoid AND UserID = :userid");
 							$isLiked->bindParam(":fotoid", $photo["FotoID"]);
 							$isLiked->bindParam(":userid", $_SESSION["UserID"]);

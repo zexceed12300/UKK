@@ -2,6 +2,10 @@
 
 include 'koneksi.php';
 
+/*
+	Query untuk mendapatkan suatu foto secara detail
+ */
+
 $query = $dbh->prepare("SELECT foto.LokasiFile, foto.FotoID, user.Username, foto.JudulFoto, foto.DeskripsiFoto, album.NamaAlbum, foto.TanggalUnggah FROM foto INNER JOIN user ON user.UserID = foto.UserID INNER JOIN album ON album.AlbumID = foto.AlbumID WHERE foto.FotoID = :fotoid");
 $query->bindParam(":fotoid", $_GET["id"]);
 $query->execute();

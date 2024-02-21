@@ -4,6 +4,10 @@ include 'koneksi.php';
 
 include 'middleware.php';
 
+/*
+	sebuah blok code untuk request delete album
+ */
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$validatedData = validate($_POST, [

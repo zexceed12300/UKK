@@ -4,6 +4,9 @@ include 'koneksi.php';
 
 include 'middleware.php';
 
+/*
+	Sebuah blok code untuk request menambahkan komentar
+ */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$validatedData = validate($_POST, [

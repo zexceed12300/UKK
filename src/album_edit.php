@@ -4,6 +4,9 @@ include 'koneksi.php';
 
 include 'middleware.php';
 
+/*
+    Cari album berdasarkan parameter albumid
+ */
 $query = $dbh->prepare("SELECT * FROM album WHERE AlbumID = :albumid");
 $query->bindParam(":albumid", $_GET["albumid"]);
 $query->execute();

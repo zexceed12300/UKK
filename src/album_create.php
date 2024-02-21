@@ -18,12 +18,16 @@ include 'middleware.php';
 
 <body>
 	<?php
+	// Include navbar
 	include 'navbar.php';
 	?>
 	<form method="post" action="album_post.php" enctype="multipart/form-data">
 		<div class="my-36 flex flex-col items-center gap-4 text-lg">
 			<h1 class="w-1/3 font-bold text-3xl text-center text-violet-600">Create Album</h1>
 			<?php
+			/*
+			Tampilkan pesan error jika validasi gagal
+			*/
 			if (!empty($_SESSION["errors"])) {
 			?>
 				<div class="border-2 text-red-600 font-bold border-red-600 px-4 py-3 rounded-2xl mb-4">

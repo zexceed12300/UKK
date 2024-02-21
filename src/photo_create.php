@@ -4,6 +4,10 @@ include 'koneksi.php';
 
 include 'middleware.php';
 
+/*
+	Query untuk mendapatkan album dari user tertentu
+ */
+
 $query = $dbh->prepare("SELECT * FROM album INNER JOIN user ON album.UserID = user.UserID WHERE user.UserID = :userid");
 $query->bindParam(":userid", $_SESSION["UserID"]);
 $query->execute();
@@ -27,6 +31,9 @@ $albums = $query->fetchAll(PDO::FETCH_ASSOC);
 	?>
 	<form method="post" action="photo_post.php" enctype="multipart/form-data">
 		<div class="flex flex-col items-center my-36 gap-4 text-lg">
+			/*
+			Tampilkan pesan error jika validasi gagal
+			*/
 			<?php
 			if (!empty($_SESSION["errors"])) {
 			?>
