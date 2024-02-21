@@ -76,11 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div class="flex flex-col gap-4 mb-8">
 				<div>
 					<span>Username</span>
-					<input name="username" type="text" class="mt-2 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-lg outline-none focus:ring-violet-600 focus:border-violet-400" placeholder="john.doe@company.com" required>
+					<input name="username" type="text" class="mt-2 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-lg outline-none focus:ring-violet-600 focus:border-violet-400" placeholder="ihsan@gmail.com" required>
 				</div>
 				<div>
 					<span>Password</span>
-					<input name="password" type="password" class="mt-2 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-lg outline-none focus:ring-violet-600 focus:border-violet-400" placeholder="john.doe@company.com" required>
+					<input name="password" type="password" class="mt-2 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-lg outline-none focus:ring-violet-600 focus:border-violet-400" placeholder="ihsan@gmail.com" required>
 				</div>
 			</div>
 			<button class="bg-violet-600 text-white font-bold p-3 rounded-lg w-full mb-3">Login</button>
