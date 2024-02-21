@@ -74,11 +74,11 @@ if (!empty($photos)) {
 							</span>
 							<div class="flex gap-4">
 								<div class="flex items-center gap-2">
-									/*
-									Query untuk mencari apakah foto ini telah kita like
-									dan menampilkan jumlah like dan komentar
-									*/
 									<?php
+									/*
+										Query untuk mencari apakah foto ini telah kita like
+										dan menampilkan jumlah like dan komentar
+									*/
 									$isLiked = $dbh->prepare("SELECT * FROM likefoto WHERE FotoID = :fotoid AND UserID = :userid");
 									$isLiked->bindParam(":fotoid", $photo["FotoID"]);
 									$isLiked->bindParam(":userid", $_SESSION["UserID"]);
