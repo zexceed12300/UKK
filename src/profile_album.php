@@ -2,10 +2,6 @@
 
 include 'koneksi.php';
 
-if (!isset($_GET["category"])) {
-	$_GET["category"] = "all";
-}
-
 if (!isset($_GET["username"]) && isset($_SESSION["Username"])) {
 	$_GET["username"] = $_SESSION["Username"];
 }
