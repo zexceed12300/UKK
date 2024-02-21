@@ -6,6 +6,10 @@ if (!isset($_GET["username"]) && isset($_SESSION["Username"])) {
 	$_GET["username"] = $_SESSION["Username"];
 }
 
+if (!isset($_GET["username"]) && !isset($_SESSION["Username"])) {
+	redirect("login.php");
+}
+
 ?>
 
 <!DOCTYPE html>
